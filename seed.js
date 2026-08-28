@@ -58,7 +58,12 @@ const examsData = [
   { id: 402, name: 'NTPC Engineering Executive Trainee Examination', category: 'PSU', description: 'Power company engineer recruitment', difficultyLevel: 'Hard', posts: 500, officialWebsite: 'www.ntpccareers.net' },
   { id: 403, name: 'BHEL Engineer Trainee Examination', category: 'PSU', description: 'BHEL engineer recruitment', difficultyLevel: 'Hard', posts: 400, officialWebsite: 'www.bhel.in' },
   { id: 404, name: 'HAL Management Trainee Examination', category: 'PSU', description: 'Hindustan Aeronautics recruitment', difficultyLevel: 'Hard', posts: 300, officialWebsite: 'www.halcareer.com' },
-  { id: 405, name: 'SAIL Management Trainee Examination', category: 'PSU', description: 'Steel Authority recruitment', difficultyLevel: 'Hard', posts: 600, officialWebsite: 'www.sailcareers.com' }
+  { id: 405, name: 'SAIL Management Trainee Examination', category: 'PSU', description: 'Steel Authority recruitment', difficultyLevel: 'Hard', posts: 600, officialWebsite: 'www.sailcareers.com' },
+
+  // Central Department - NIC (451-460)
+  { id: 451, name: 'NIC Recruitment Examination', category: 'Central Department', description: 'National Informatics Centre IT and Administrative positions', difficultyLevel: 'Hard', posts: 250, officialWebsite: 'www.nic.in' },
+  { id: 452, name: 'NIC Scientist/Engineer Examination', category: 'Central Department', description: 'NIC technical and engineering roles', difficultyLevel: 'Hard', posts: 150, officialWebsite: 'www.nic.in' },
+  { id: 453, name: 'NIC Administrator Examination', category: 'Central Department', description: 'NIC administrative and support positions', difficultyLevel: 'Medium', posts: 200, officialWebsite: 'www.nic.in' }
 ];
 
 async function seedDatabase() {
