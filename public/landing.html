@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovNexa AI - Government Exam Intelligence Platform</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #667eea;
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 15px 40px;
+      border: 2px solid white;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #667eea;
+    }
+
+    /* Features Section */
+    .features {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: white;
+      font-size: 42px;
+      margin-bottom: 60px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Exams Section */
+    .exams-section {
+      background: white;
+      padding: 80px 20px;
+      margin-top: 60px;
+    }
+
+    .exams-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .exams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .exam-category {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .exam-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(102, 126, 234, 0.5);
+    }
+
+    .exam-category h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .exam-category p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .stat-item h2 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .stat-item p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #667eea;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #444;
+      padding-top: 20px;
+      color: #888;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .step {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+
+    .step h3 {
+      color: #667eea;
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">🎯 GovNexa AI</div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#exams">Exams</a>
+        <a href="#how-it-works">How It Works</a>
+        <button class="btn-login" onclick="goToApp()">Launch App</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>🚀 Government Exam Intelligence</h1>
+    <p>Your One-Stop Solution for All Indian Government Exam Information</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="goToApp()">Get Started</button>
+      <button class="btn-secondary" onclick="scrollToSection('#features')">Learn More</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <h2 class="section-title">✨ Why Choose GovNexa AI?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>110+ Exams</h3>
+        <p>Comprehensive database of all Indian government exams including UPSC, SSC, Railway, Banking, Defence, Medical, PSU and more</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Smart Search</h3>
+        <p>Find exams instantly with real-time search and filter by 14+ categories. Compare exams by difficulty and salary</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>A-Z Details</h3>
+        <p>Get complete information - eligibility, exam pattern, syllabus, dates, salary, posts, and official links</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Login</h3>
+        <p>Simple and secure email/password authentication with encrypted password storage</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Beautiful responsive design works perfectly on desktop, tablet, and mobile devices</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast & Reliable</h3>
+        <p>Lightning-fast loading with optimized API endpoints and smooth user experience</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exams Section -->
+  <section id="exams" class="exams-section">
+    <div class="exams-container">
+      <h2 class="section-title" style="color: #333; text-shadow: none;">📚 Exam Categories</h2>
+      <div class="exams-grid">
+        <div class="exam-category">
+          <h3>🏛️ UPSC</h3>
+          <p>Civil Services, Forest Service, Engineering</p>
+        </div>
+        <div class="exam-category">
+          <h3>📊 SSC</h3>
+          <p>CGL, CHSL, MTS, Junior Engineer</p>
+        </div>
+        <div class="exam-category">
+          <h3>🚂 Railway</h3>
+          <p>NTPC, Group D, ALP, Technician</p>
+        </div>
+        <div class="exam-category">
+          <h3>🏦 Banking</h3>
+          <p>IBPS, SBI, RRB Officer Exams</p>
+        </div>
+        <div class="exam-category">
+          <h3>🛡️ Defence</h3>
+          <p>AFCAT, Agniveer, Coast Guard</p>
+        </div>
+        <div class="exam-category">
+          <h3>🏥 Medical</h3>
+          <p>AIIMS, JIPMER, ESIC, Nursing</p>
+        </div>
+        <div class="exam-category">
+          <h3>🏢 PSU</h3>
+          <p>ONGC, NTPC, BHEL, HAL, SAIL</p>
+        </div>
+        <div class="exam-category">
+          <h3>💼 Central Depts</h3>
+          <p>NIC, India Post, EPFO, FCI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-item">
+        <h2>110+</h2>
+        <p>Government Exams</p>
+      </div>
+      <div class="stat-item">
+        <h2>14+</h2>
+        <p>Exam Categories</p>
+      </div>
+      <div class="stat-item">
+        <h2>1000s</h2>
+        <p>Positions Available</p>
+      </div>
+      <div class="stat-item">
+        <h2>∞</h2>
+        <p>Career Opportunities</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <h2 class="section-title">🎯 How It Works</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Register</h3>
+        <p>Create a free account with email and password in seconds</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Login</h3>
+        <p>Securely login to access the complete exam database</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Search</h3>
+        <p>Find exams by name or filter by category</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Explore</h3>
+        <p>View complete details - eligibility, dates, salary, and more</p>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <h3>Prepare</h3>
+        <p>Get all information needed to plan your exam preparation</p>
+      </div>
+      <div class="step">
+        <div class="step-number">6</div>
+        <h3>Succeed</h3>
+        <p>Achieve your dream government job with informed decisions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <h2 style="margin-bottom: 30px;">🎯 GovNexa AI</h2>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#exams">Exams</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="https://github.com/dhakshatech-4/exam-prep-hub" target="_blank">GitHub</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 GovNexa AI. All rights reserved.</p>
+        <p>Making Government Exam Information Accessible to Everyone! 🚀</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function goToApp() {
+      window.location.href = '/';
+    }
+
+    function scrollToSection(selector) {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
